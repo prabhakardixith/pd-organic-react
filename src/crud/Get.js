@@ -3,7 +3,7 @@ import {useState,useEffect,useContext} from 'react'
 import axios from 'axios';
 
 
-const Get = ({setCount,count}) => {
+const Get = ({setCount,count,setEdit}) => {
 
     const [data, setData] = useState([]);
     const [error, setError] = useState();
@@ -14,11 +14,22 @@ const Get = ({setCount,count}) => {
       .catch(er => setError(er.message))
     }, [count])
     
+    const updateUser = (d)=>{
+      setEdit(d);
+    }
+
+    const deleteUser = (d)=>{
+      console.log("Delete User Id :"+d);
+      axios.delete(`https://pd-organic.herokuapp.com/user?id=${d}`)
+      .then(res => {setCount(res.data.length)})
+      .catch(er => setError(er.message))
+      
+    }
   return (
     <div>
         <h1>All Users</h1>
       {error && <p>Error Message : {error}</p>}
-      {!error && data && data.map(d => (<p key={d.userId}>id : {d.userId} , Name : {d.userName} , Email : {d.emailId}</p>))}
+      {!error && data && data.map(d => (<p key={d.userId}>Name : {d.userName} , Email : {d.emailId} <button onClick={()=>updateUser(d)}>Edit</button><button onClick={()=>deleteUser(d.userId)}>Delete</button></p>))}
     </div>
   )
 }
