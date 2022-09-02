@@ -16,8 +16,8 @@ const Post = ({ setCount, edit, setEdit }) => {
       console.log("new User :"+JSON.stringify(user));
       axios
         .post("https://pd-organic.herokuapp.com/user", user)
-        .then((res) => setCount(user.userId))
-        .then((res) => setUser({
+        .then(res => setCount(res.data.length))
+        .then(res => setUser({
           userId: 0,
           userName: "",
           emailId: "",

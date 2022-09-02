@@ -7,6 +7,7 @@ const Get = ({ setCount, count, setEdit, loading, setLoading }) => {
   const [error, setError] = useState();
 
   useEffect(() => {
+    // console.log("use Effect Get");
     axios
       .get("https://pd-organic.herokuapp.com/user")
       .then((res) => {
@@ -15,7 +16,7 @@ const Get = ({ setCount, count, setEdit, loading, setLoading }) => {
         setLoading(false);
       })
       .catch((er) => setError(er.message));
-  }, [count]);
+  },[count]);
 
   const updateUser = (d) => {
     setEdit(d);

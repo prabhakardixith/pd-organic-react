@@ -6,12 +6,12 @@ function App() {
   const [edit, setEdit] = useState();
   const [deleted, setDeleted] = useState();
   const [loading, setLoading] = useState(true);
-  const [count, setCount] = useState();
+ 
 
   useEffect(() => {
     document.title = "User List";
   }, []);
-
+  const [count, setCount] = useState();
   return (
     <div>
       {count ? (
