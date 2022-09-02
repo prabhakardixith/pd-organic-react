@@ -28,7 +28,7 @@ const Get = ({setCount,count,setEdit,loading,setLoading}) => {
     }
   return (loading ? (<div><h1>Loading...</h1></div>):
     (<div>
-       {!count ? <h1>List is empty</h1>:<h1>All Users</h1>}
+       {!data?.length ? <h1>List is empty</h1>:<h1>All Users</h1>}
       {error && <p>Error Message : {error}</p>}
       {!error && data && data.map(d => (<p key={d.userId}>Name : {d.userName} , Email : {d.emailId} <button onClick={()=>updateUser(d)}>Edit</button><button onClick={()=>deleteUser(d.userId)}>Delete</button></p>))}
     </div>)

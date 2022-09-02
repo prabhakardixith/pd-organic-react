@@ -24,7 +24,7 @@ const Post = ({ setCount, edit, setEdit }) => {
       axios
         .put("https://pd-organic.herokuapp.com/user", editor)
         .then((res) => {
-          setCount(1);
+          setCount(0);
           setEditor({});
         })
         .then((res) => {
