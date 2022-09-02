@@ -10,17 +10,21 @@ const Post = ({ setCount, edit, setEdit }) => {
   });
 
   const addUser = () => {
-    const formStatus = handleForm();
+    // const formStatus = handleForm();
     // if (formStatus.status === true) {
     if (!edit) {
-      console.log(user);
+      console.log("new User :"+JSON.stringify(user));
       axios
         .post("https://pd-organic.herokuapp.com/user", user)
-        .then((res) => setCount(0))
-        .then((res) => setUser({}))
+        .then((res) => setCount(user.userId))
+        .then((res) => setUser({
+          userId: 0,
+          userName: "",
+          emailId: "",
+        }))
         .catch((er) => console.log("Error in Post : " + er.message));
     } else {
-      console.log(editor);
+      console.log("editor User :"+JSON.stringify(editor));
       axios
         .put("https://pd-organic.herokuapp.com/user", editor)
         .then((res) => {
@@ -41,36 +45,7 @@ const Post = ({ setCount, edit, setEdit }) => {
     // }
   };
 
-  const handleForm = () => {
-    const formVal = { status: true, name: "", email: "" };
-    if (editor) {
-      if (editor.userName === "" || editor.emailId === "") {
-        if (editor.userName === "") {
-          formVal.name =
-            "editor Name is invalid or editor Name cannot be empty";
-        }
-        if (editor.emailId === "") {
-          formVal.email =
-            "editor Email is invalid or editor Email cannot be empty";
-        }
-        formVal.status = false;
-        return formVal;
-      }
-    }
-    if (user) {
-      if (user.userName === "" || user.emailId === "") {
-        if (user.userName === "") {
-          formVal.name = "User Name is invalid or User Name cannot be empty";
-        }
-        if (user.emailId === "") {
-          formVal.email = "User Email is invalid or User Email cannot be empty";
-        }
-        formVal.status = false;
-        return formVal;
-      }
-    }
-    return formVal;
-  };
+  
   return (
     <div>
       {!edit ? <h1>Add New User</h1> : <h1>Edit New User</h1>}
@@ -116,3 +91,34 @@ const Post = ({ setCount, edit, setEdit }) => {
 };
 
 export default Post;
+
+// const handleForm = () => {
+  //   const formVal = { status: true, name: "", email: "" };
+  //   if (editor) {
+  //     if (editor.userName === "" || editor.emailId === "") {
+  //       if (editor.userName === "") {
+  //         formVal.name =
+  //           "editor Name is invalid or editor Name cannot be empty";
+  //       }
+  //       if (editor.emailId === "") {
+  //         formVal.email =
+  //           "editor Email is invalid or editor Email cannot be empty";
+  //       }
+  //       formVal.status = false;
+  //       return formVal;
+  //     }
+  //   }
+  //   if (user) {
+  //     if (user.userName === "" || user.emailId === "") {
+  //       if (user.userName === "") {
+  //         formVal.name = "User Name is invalid or User Name cannot be empty";
+  //       }
+  //       if (user.emailId === "") {
+  //         formVal.email = "User Email is invalid or User Email cannot be empty";
+  //       }
+  //       formVal.status = false;
+  //       return formVal;
+  //     }
+  //   }
+  //   return formVal;
+  // };
