@@ -4,6 +4,10 @@ import Get from './crud/Get';
 import Post from './crud/Post';
 function App() {
 
+  useEffect(()=>{
+    document.title = "Organic Store"
+  },[])
+
   const [count, setCount] = useState(0)
   return (
     <div>
