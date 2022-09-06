@@ -5,7 +5,7 @@ import Post from "./Post";
 import { Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 const Main = () => {
-    const[url,setUrl] = useState("http://localhost:8080/user"); // "https://pd-organic.herokuapp.com/user"
+    const[url,setUrl] = useState("https://pd-organic.herokuapp.com/user"); // "https://pd-organic.herokuapp.com/user"
     const [edit, setEdit] = useState();
     const [deleted, setDeleted] = useState();
     const [loading, setLoading] = useState(true); 
