@@ -18,13 +18,14 @@ function App() {
 
   return (
     <div>
-
-      {/* mui practice */}
-      {/* <MuiButton /> */}
-
-
+      <Typography variant="h1">
+        MUI Project
+        </Typography>
       {/* crud */}
       <Main/>
+
+     {/* mui practice */}
+      {/* <MuiButton /> */}
     </div>
   );
 }
