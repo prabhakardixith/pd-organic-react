@@ -3,12 +3,11 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import CircularProgress from '@mui/material/CircularProgress';
-import MuiTable from './MuiTable'
+import CircularProgress from "@mui/material/CircularProgress";
+import MuiTable from "./MuiTable";
 const Get = ({ setCount, count, setEdit, loading, setLoading, baseUrl }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
-  
 
   useEffect(() => {
     // console.log("use Effect Get");
@@ -37,22 +36,35 @@ const Get = ({ setCount, count, setEdit, loading, setLoading, baseUrl }) => {
       })
       .catch((er) => setError(er.message));
 
-      return ()=>{
-        console.log("Get Component unmounted");
-      }
+    return () => {
+      console.log("Get Component unmounted");
+    };
   };
   return loading ? (
-    <Button align="center">
+    <Typography align="center">
+      <Button align="center">
         <CircularProgress />
       </Button>
+    </Typography>
   ) : (
     <div>
-      {!data?.length ? <Typography variant="h4" align="center">List is empty</Typography> : <Typography variant="h4" align="center">All Users</Typography>}
-      {error && <Typography variant="body1" align="center">Error Message : {error}</Typography>}
-      {!error &&
-        data &&
-       <MuiTable data={data} updateUser={updateUser} deleteUser={deleteUser}/>}
-      
+      {!data?.length ? (
+        <Typography variant="h4" align="center">
+          List is empty
+        </Typography>
+      ) : (
+        <Typography variant="h4" align="center">
+          All Users
+        </Typography>
+      )}
+      {error && (
+        <Typography variant="body1" align="center">
+          Error Message : {error}
+        </Typography>
+      )}
+      {!error && data && (
+        <MuiTable data={data} updateUser={updateUser} deleteUser={deleteUser} />
+      )}
     </div>
   );
 };
