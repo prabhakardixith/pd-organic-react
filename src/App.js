@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div>
-      <Typography variant="h1">
+      <Typography variant="h5">
         MUI Project
         </Typography>
       {/* crud */}
