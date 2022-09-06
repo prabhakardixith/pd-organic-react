@@ -42,11 +42,9 @@ const Get = ({ setCount, count, setEdit, loading, setLoading, baseUrl }) => {
       }
   };
   return loading ? (
-    <>
-    <Button>
+    <Button align="center">
         <CircularProgress />
       </Button>
-    </>
   ) : (
     <div>
       {!data?.length ? <Typography variant="h4" align="center">List is empty</Typography> : <Typography variant="h4" align="center">All Users</Typography>}
