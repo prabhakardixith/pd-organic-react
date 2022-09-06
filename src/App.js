@@ -27,7 +27,17 @@ function App() {
      {/* mui practice */}
       {/* <MuiButton /> */}
     </div>
+
   );
 }
 
 export default App;
+
+// package.json for heroku
+
+// "scripts": {
+//   "start": "react-scripts start",
+//   "build": "react-scripts build",
+//   "test": "react-scripts test",
+//   "eject": "react-scripts eject"
+// }
