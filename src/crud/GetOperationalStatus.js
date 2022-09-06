@@ -11,7 +11,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { CircularProgress } from '@mui/material';
-
+import {Skeleton} from '@mui/material';
+import {Box} from '@mui/material';
+import { Stack } from '@mui/system';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -46,9 +48,9 @@ const GetOperationalStatus = ({ count,baseUrl }) => {
   },[count])
 
   return (
-    <div>
+    <div style={{marginLeft:'350px'}}>
      
-      {isLoading ?  <Typography variant="h4" color="initial" align="center"><CircularProgress/></Typography> : <Typography variant="h4" color="initial" align="center">Operational Status</Typography>}
+      {isLoading ?  <Stack spacing={1} sx={{ width: 700 }} align="center"><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular"></Skeleton><Skeleton variant="rectangular" ></Skeleton></Stack> : <Typography variant="h4" color="initial" align="center">Operational Status</Typography>}
       {!isLoading && operationalStatus && (<TableContainer component={Paper} align="center">
       <Table sx={{ maxWidth: 950 }} aria-label="customized table">
         <TableHead>

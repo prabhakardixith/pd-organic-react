@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Typography, TextField, Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-const Post = ({ setCount, edit, setEdit,baseUrl }) => {
+import Skeleton from '@mui/material/Skeleton';
+  import Stack from '@mui/material/Stack';
+
+const Post = ({ setCount, edit, setEdit,baseUrl,loading }) => {
   const [forms, setForms] = useState();
   const [editor, setEditor] = useState();
   const [user, setUser] = useState({
@@ -48,13 +51,22 @@ const Post = ({ setCount, edit, setEdit,baseUrl }) => {
     //   setEditor({})
     // }
   };
+  
 
+      
+  
   
   return (
-    <div>
-      {!edit ? <Typography variant="h4">Add New User</Typography> : <Typography variant="h4">Edit New User</Typography>}
-      {!editor && edit && setEditor(edit)}
-      <form
+    <div style={{marginLeft:'600px', marginTop:'30px',marginBottom:'30px'}}>
+      {loading && <Stack spacing={1} align="center">
+        <Skeleton width={210} height={40} variant="text" sx={{ fontSize: '1rem' }} />
+        <Skeleton variant="rectangular" width={210} height={60} />
+        <Skeleton variant="rounded" width={210} height={60} />
+      </Stack>
+      }
+      {!edit ? !loading && <Typography variant="h4">Add New User</Typography> : !loading && <Typography variant="h4">Edit New User</Typography>}
+      {!loading && !editor && edit && setEditor(edit)}
+      {!loading && <form
         onSubmit={(e) => {
           e.preventDefault();
           addUser();
@@ -86,7 +98,7 @@ const Post = ({ setCount, edit, setEdit,baseUrl }) => {
         <br />
         <Button variant="outlined" type="submit" endIcon={<SendIcon />} >Submit</Button>
         <Button variant="outlined" type="reset" endIcon={<SendIcon />} onClick={() => (editor ? setEditor({}) : setUser({}))}>Reset</Button>
-      </form>
+      </form>}
     </div>
   );
 };

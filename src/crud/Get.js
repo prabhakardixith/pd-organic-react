@@ -5,6 +5,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 import MuiTable from "./MuiTable";
+import Box from '@mui/material/Box';
+import Skeleton from '@mui/material/Skeleton';
 const Get = ({ setCount, count, setEdit, loading, setLoading, baseUrl }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
@@ -40,12 +42,16 @@ const Get = ({ setCount, count, setEdit, loading, setLoading, baseUrl }) => {
       console.log("Get Component unmounted");
     };
   };
+
+  
   return loading ? (
-    <Typography align="center">
-      <Button align="center">
-        <CircularProgress />
-      </Button>
-    </Typography>
+    <Box sx={{ width: 700,marginLeft:'350px'}} align="center">
+      <Skeleton />
+      <Skeleton animation="wave" />
+      <Skeleton animation="wave" />
+      <Skeleton animation="wave" />
+      <Skeleton animation={false} />
+    </Box>
   ) : (
     <div>
       {!data?.length ? (
