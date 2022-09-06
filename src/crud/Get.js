@@ -1,10 +1,14 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-
-const Get = ({ setCount, count, setEdit, loading, setLoading,baseUrl }) => {
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import CircularProgress from '@mui/material/CircularProgress';
+import MuiTable from './MuiTable'
+const Get = ({ setCount, count, setEdit, loading, setLoading, baseUrl }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
+  
 
   useEffect(() => {
     // console.log("use Effect Get");
@@ -17,7 +21,7 @@ const Get = ({ setCount, count, setEdit, loading, setLoading,baseUrl }) => {
         setLoading(false);
       })
       .catch((er) => setError(er.message));
-  },[count]);
+  }, [count]);
 
   const updateUser = (d) => {
     setEdit(d);
@@ -32,24 +36,25 @@ const Get = ({ setCount, count, setEdit, loading, setLoading,baseUrl }) => {
         setCount(res.data.length);
       })
       .catch((er) => setError(er.message));
+
+      return ()=>{
+        console.log("Get Component unmounted");
+      }
   };
   return loading ? (
-    <div>
-      <h1>Loading...</h1>
-    </div>
+    <>
+    <Button>
+        <CircularProgress />
+      </Button>
+    </>
   ) : (
     <div>
-      {!data?.length ? <h1>List is empty</h1> : <h1>All Users</h1>}
-      {error && <p>Error Message : {error}</p>}
+      {!data?.length ? <Typography variant="h4" align="center">List is empty</Typography> : <Typography variant="h4" align="center">All Users</Typography>}
+      {error && <Typography variant="body1" align="center">Error Message : {error}</Typography>}
       {!error &&
         data &&
-        data.map((d) => (
-          <p key={d.userId}>
-            Name : {d.userName} , Email : {d.emailId}{" "}
-            <button onClick={() => updateUser(d)}>Edit</button>
-            <button onClick={() => deleteUser(d.userId)}>Delete</button>
-          </p>
-        ))}
+       <MuiTable data={data} updateUser={updateUser} deleteUser={deleteUser}/>}
+      
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Typography, TextField, Button } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 const Post = ({ setCount, edit, setEdit,baseUrl }) => {
   const [forms, setForms] = useState();
   const [editor, setEditor] = useState();
@@ -50,7 +52,7 @@ const Post = ({ setCount, edit, setEdit,baseUrl }) => {
   
   return (
     <div>
-      {!edit ? <h1>Add New User</h1> : <h1>Edit New User</h1>}
+      {!edit ? <Typography variant="h4">Add New User</Typography> : <Typography variant="h4">Edit New User</Typography>}
       {!editor && edit && setEditor(edit)}
       <form
         onSubmit={(e) => {
@@ -82,11 +84,8 @@ const Post = ({ setCount, edit, setEdit,baseUrl }) => {
         />
         {/* {forms && <p>{forms.email}</p>} */}
         <br />
-        <input type="submit" />
-        <input
-          type="reset"
-          onClick={() => (editor ? setEditor({}) : setUser({}))}
-        />
+        <Button variant="outlined" type="submit" endIcon={<SendIcon />} >Submit</Button>
+        <Button variant="outlined" type="reset" endIcon={<SendIcon />} onClick={() => (editor ? setEditor({}) : setUser({}))}>Reset</Button>
       </form>
     </div>
   );
