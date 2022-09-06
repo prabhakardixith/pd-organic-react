@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Get from "./crud/Get";
 import Post from "./crud/Post";
 function App() {
+  const[url,setUrl] = useState("http://localhost:8080/user"); // "https://pd-organic.herokuapp.com/user"
   const [edit, setEdit] = useState();
   const [deleted, setDeleted] = useState();
   const [loading, setLoading] = useState(true);
@@ -25,8 +26,9 @@ function App() {
         setEdit={setEdit}
         loading={loading}
         setLoading={setLoading}
+        baseUrl={url}
       />
-      {<Post setCount={setCount} edit={edit} setEdit={setEdit} />}
+      {<Post baseUrl={url} setCount={setCount} edit={edit} setEdit={setEdit} />}
     </div>
   );
 }

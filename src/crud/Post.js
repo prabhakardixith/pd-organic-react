@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-const Post = ({ setCount, edit, setEdit }) => {
+const Post = ({ setCount, edit, setEdit,baseUrl }) => {
   const [forms, setForms] = useState();
   const [editor, setEditor] = useState();
   const [user, setUser] = useState({
@@ -15,7 +15,8 @@ const Post = ({ setCount, edit, setEdit }) => {
     if (!edit) {
       console.log("new User :"+JSON.stringify(user));
       axios
-        .post("https://pd-organic.herokuapp.com/user", user)
+        // .post("https://pd-organic.herokuapp.com/user", user)
+        .post(baseUrl, user)
         .then(res => setCount(res.data.length))
         .then(res => setUser({
           userId: 0,
@@ -26,7 +27,8 @@ const Post = ({ setCount, edit, setEdit }) => {
     } else {
       console.log("editor User :"+JSON.stringify(editor));
       axios
-        .put("https://pd-organic.herokuapp.com/user", editor)
+        // .put("https://pd-organic.herokuapp.com/user", editor)
+        .put(baseUrl, editor)
         .then((res) => {
           setCount(0);
           setEditor({});

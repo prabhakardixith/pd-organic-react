@@ -2,14 +2,15 @@ import React from "react";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
-const Get = ({ setCount, count, setEdit, loading, setLoading }) => {
+const Get = ({ setCount, count, setEdit, loading, setLoading,baseUrl }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
 
   useEffect(() => {
     // console.log("use Effect Get");
     axios
-      .get("https://pd-organic.herokuapp.com/user")
+      // .get("https://pd-organic.herokuapp.com/user")
+      .get(baseUrl)
       .then((res) => {
         setData(res.data);
         setCount(res.data.length);
@@ -25,7 +26,8 @@ const Get = ({ setCount, count, setEdit, loading, setLoading }) => {
   const deleteUser = (d) => {
     console.log("Delete User Id :" + d);
     axios
-      .delete(`https://pd-organic.herokuapp.com/user?id=${d}`)
+      // .delete(`https://pd-organic.herokuapp.com/user?id=${d}`)
+      .delete(`${baseUrl}?id=${d}`)
       .then((res) => {
         setCount(res.data.length);
       })
