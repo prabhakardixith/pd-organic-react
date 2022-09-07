@@ -57,7 +57,7 @@ const Post = ({ setCount, edit, setEdit,baseUrl,loading }) => {
   
   
   return (
-    <div style={{marginLeft:'600px', marginTop:'30px',marginBottom:'30px'}}>
+    <div style={{marginTop:'30px',marginBottom:'30px'}}>
       {loading && <Stack spacing={1} align="center">
         <Skeleton width={210} height={40} variant="text" sx={{ fontSize: '1rem' }} />
         <Skeleton variant="rectangular" width={210} height={60} />

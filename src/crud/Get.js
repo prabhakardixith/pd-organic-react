@@ -45,7 +45,7 @@ const Get = ({ setCount, count, setEdit, loading, setLoading, baseUrl }) => {
 
   
   return loading ? (
-    <Box sx={{ width: 700,marginLeft:'350px'}} align="center">
+    <Box sx={{ width: 700}} align="center">
       <Skeleton />
       <Skeleton animation="wave" />
       <Skeleton animation="wave" />
