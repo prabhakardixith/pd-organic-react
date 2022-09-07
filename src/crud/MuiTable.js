@@ -37,7 +37,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const MuiTable = ({data,deleteUser,updateUser}) => {
   return (
-    <TableContainer Component={Paper} align="center" >
+    <TableContainer Component={Paper} >
       <Table aria-label="User Data" sx={{maxWidth:950}}>
         <TableHead>
             <TableRow>

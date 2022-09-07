@@ -50,15 +50,15 @@ const GetOperationalStatus = ({ count,baseUrl }) => {
   return (
     <>
      
-      {isLoading ?  <Stack spacing={1} sx={{ width: 700 }} align="center"><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular"></Skeleton><Skeleton variant="rectangular" ></Skeleton></Stack> : <Typography variant="h4" color="initial" align="center">Operational Status</Typography>}
+      {isLoading ?  <Stack spacing={1} sx={{ width: 700 }} ><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular"></Skeleton><Skeleton variant="rectangular" ></Skeleton></Stack> : <Typography variant="h4" color="initial" align="center">Operational Status</Typography>}
       {!isLoading && operationalStatus && (
-      <TableContainer Component={Paper} align="center" >
+      <TableContainer Component={Paper}>
       <Table aria-label="User Data" sx={{maxWidth:950}}>
         <TableHead>
             <TableRow>
             <StyledTableCell>Message</StyledTableCell>
-            <StyledTableCell align="center">Message Date</StyledTableCell>
-            <StyledTableCell align="center">User Id</StyledTableCell>
+            <StyledTableCell >Message Date</StyledTableCell>
+            <StyledTableCell >User Id</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>

@@ -45,7 +45,7 @@ const Get = ({ setCount, count, setEdit, loading, setLoading, baseUrl }) => {
 
   
   return loading ? (
-    <Box sx={{ width: 700}} align="center">
+    <Box sx={{ width: 700}} >
       <Skeleton />
       <Skeleton animation="wave" />
       <Skeleton animation="wave" />
@@ -55,16 +55,16 @@ const Get = ({ setCount, count, setEdit, loading, setLoading, baseUrl }) => {
   ) : (
     <div>
       {!data?.length ? (
-        <Typography variant="h4" align="center">
+        <Typography variant="h4" >
           List is empty
         </Typography>
       ) : (
-        <Typography variant="h4" align="center">
+        <Typography variant="h4" >
           All Users
         </Typography>
       )}
       {error && (
-        <Typography variant="body1" align="center">
+        <Typography variant="body1" >
           Error Message : {error}
         </Typography>
       )}

@@ -19,9 +19,9 @@ const Main = () => {
        {/* Crud */}
 
       {count ? (
-        <Typography variant="h4" align="center">Total user count : {count}</Typography>
+        <Typography variant="h4" >Total user count : {count}</Typography>
       ) : (
-        <Typography variant="h4" align="center">Total user count : </Typography>
+        <Typography variant="h4" >Total user count : </Typography>
       )}
       <Get
         setCount={setCount}
