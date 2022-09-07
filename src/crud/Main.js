@@ -4,6 +4,7 @@ import GetOperationalStatus from "./GetOperationalStatus";
 import Post from "./Post";
 import { Typography } from "@mui/material";
 import { useState, useEffect } from "react";
+import MuiForm from "./MuiForm";
 const Main = () => {
     const[url,setUrl] = useState("https://pd-organic.herokuapp.com/user"); // "https://pd-organic.herokuapp.com/user"
     const [edit, setEdit] = useState();
@@ -31,8 +32,9 @@ const Main = () => {
         setLoading={setLoading}
         baseUrl={url}
       />
+      {/* {<MuiForm/>} */}
       {<Post loading={loading} baseUrl={url} setCount={setCount} edit={edit} setEdit={setEdit} />}
-      <GetOperationalStatus count={count} baseUrl={url}/>
+       <GetOperationalStatus count={count} baseUrl={url}/>
     </div>
   )
 }
