@@ -5,7 +5,7 @@ import { Paper, Grid } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
-
+import CircularProgress from "@mui/material/CircularProgress";
 const Post = ({ setCount, edit, setEdit, baseUrl, loading }) => {
   const [forms, setForms] = useState();
   const [editor, setEditor] = useState();
@@ -58,16 +58,17 @@ const Post = ({ setCount, edit, setEdit, baseUrl, loading }) => {
   return (
     <div style={{ marginTop: "30px", marginBottom: "30px" }}>
       {loading && (
-        <Stack spacing={1} align="center">
-          <Skeleton
-            width={210}
-            height={40}
-            variant="text"
-            sx={{ fontSize: "1rem" }}
-          />
-          <Skeleton variant="rectangular" width={210} height={60} />
-          <Skeleton variant="rounded" width={210} height={60} />
-        </Stack>
+        // <Stack spacing={1} align="center">
+        //   <Skeleton
+        //     width={210}
+        //     height={40}
+        //     variant="text"
+        //     sx={{ fontSize: "1rem" }}
+        //   />
+        //   <Skeleton variant="rectangular" width={210} height={60} />
+        //   <Skeleton variant="rounded" width={210} height={60} />
+        // </Stack>
+        <CircularProgress color='warning' style={{ marginLeft:'200px',marginTop:'150px' }}/>
       )}
       {!edit
         ? !loading && <Typography variant="h4">Add New User</Typography>

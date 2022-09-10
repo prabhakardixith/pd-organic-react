@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 
 import Main from "./crud/Main";
 
-
-import MuiButton from "./mui/MuiButton";
 function App() {
 
   useEffect(() => {
@@ -18,14 +16,8 @@ function App() {
 
   return (
     <div>
-      <Typography variant="h5" align="center">
-        MUI Project
-        </Typography>
       {/* crud */}
       <Main/>
-
-     {/* mui practice */}
-      {/* <MuiButton /> */}
     </div>
 
   );

@@ -49,22 +49,22 @@ const GetOperationalStatus = ({ count,baseUrl }) => {
 
   return (
     <>
-     
-      {isLoading ?  <Stack spacing={1} sx={{ width: 700 }} ><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular"></Skeleton><Skeleton variant="rectangular" ></Skeleton></Stack> : <Typography variant="h4" color="initial" align="center">Operational Status</Typography>}
+     {/* {isLoading ?  <Stack spacing={1} sx={{ width: 700 }} ><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular"></Skeleton><Skeleton variant="rectangular" ></Skeleton></Stack> : <Typography variant="h4" color="initial" >Operational Status</Typography>} */}
+      {isLoading ?   <CircularProgress color='secondary' style={{ marginTop:'100px',marginLeft:'200px'}}/> : <Typography variant="h4" color="initial" >Operational Status</Typography>}
       {!isLoading && operationalStatus && (
       <TableContainer Component={Paper}>
       <Table aria-label="User Data" sx={{maxWidth:950}}>
         <TableHead>
             <TableRow>
-            <StyledTableCell>Message</StyledTableCell>
-            <StyledTableCell >Message Date</StyledTableCell>
-            <StyledTableCell >User Id</StyledTableCell>
+            <StyledTableCell align="center">Message</StyledTableCell>
+            <StyledTableCell align="center">Message Date</StyledTableCell>
+            <StyledTableCell align="center">User Id</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {operationalStatus.map((os) => (
             <StyledTableRow key={os.id}>
-              <StyledTableCell component="th" scope="row">
+              <StyledTableCell component="th" scope="row" >
                 {os.message}
               </StyledTableCell>
               <StyledTableCell align="center">{os.messageDate}</StyledTableCell>

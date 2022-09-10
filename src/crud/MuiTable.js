@@ -8,8 +8,7 @@ import {
   tableCellClasses,
   TableRow,
   TableCell,
-  Paper,
-  Button
+  Paper
 } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -44,8 +43,7 @@ const MuiTable = ({data,deleteUser,updateUser}) => {
                 <StyledTableCell align="center">Id</StyledTableCell>
                 <StyledTableCell align="center">Name</StyledTableCell>
                 <StyledTableCell align="center">Email</StyledTableCell>
-                <StyledTableCell align="center">Edit</StyledTableCell>
-                <StyledTableCell align="center">Delete</StyledTableCell>
+                <StyledTableCell align="center">Action</StyledTableCell>
             </TableRow>
         </TableHead>
         <TableBody>
@@ -55,8 +53,11 @@ const MuiTable = ({data,deleteUser,updateUser}) => {
                         <StyledTableCell align="center" component="th" scope="row">{d.userId}</StyledTableCell>
                         <StyledTableCell align="center">{d.userName}</StyledTableCell>
                         <StyledTableCell align="center">{d.emailId}</StyledTableCell>
-                        <StyledTableCell align="center"><EditIcon onClick={() => updateUser(d)} variant="outlined" >Edit</EditIcon></StyledTableCell>
-                        <StyledTableCell align="center"><DeleteIcon onClick={() => deleteUser(d.userId)} variant="outlined" color="warning" alignment="center" enableRipple></DeleteIcon></StyledTableCell>
+                        <StyledTableCell align="center">
+                          <EditIcon onClick={() => updateUser(d)} variant="outlined"  style={{marginRight:'15px'}}>Edit</EditIcon>
+                          <DeleteIcon  style={{marginLeft:'15px'}} onClick={() => deleteUser(d.userId)} variant="outlined" color="warning" alignment="center" enableRipple></DeleteIcon>
+                          </StyledTableCell>
+                        
                     </StyledTableRow>
                   ))
             }

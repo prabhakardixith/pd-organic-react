@@ -45,13 +45,14 @@ const Get = ({ setCount, count, setEdit, loading, setLoading, baseUrl }) => {
 
   
   return loading ? (
-    <Box sx={{ width: 700}} >
-      <Skeleton />
-      <Skeleton animation="wave" />
-      <Skeleton animation="wave" />
-      <Skeleton animation="wave" />
-      <Skeleton animation={false} />
-    </Box>
+    // <Box sx={{ width: 700}} >
+    //   <Skeleton />
+    //   <Skeleton animation="wave" />
+    //   <Skeleton animation="wave" />
+    //   <Skeleton animation="wave" />
+    //   <Skeleton animation={false} />
+    // </Box>
+    <CircularProgress color='primary' style={{ marginLeft:'200px',marginTop:'150px' }}/>
   ) : (
     <div>
       {!data?.length ? (
