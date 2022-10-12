@@ -6,7 +6,7 @@ import SendIcon from "@mui/icons-material/Send";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
-const Post = ({ setCount, edit, setEdit, baseUrl, loading }) => {
+const Post = ({ setCount, edit, setEdit,setEditId, baseUrl, loading }) => {
   const [forms, setForms] = useState();
   const [editor, setEditor] = useState();
   const [user, setUser] = useState({
@@ -44,6 +44,7 @@ const Post = ({ setCount, edit, setEdit, baseUrl, loading }) => {
         .then((res) => {
           setEditor(null);
           setEdit(null);
+          setEditId(null)
         })
         .catch((er) => console.log("Error in Put : " + er.message));
     }

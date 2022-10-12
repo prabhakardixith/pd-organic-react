@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext,setEditId } from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -7,7 +7,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import MuiTable from "./MuiTable";
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
-const Get = ({ setCount, count, setEdit, loading, setLoading, baseUrl }) => {
+const Get = ({ setCount, count, setEditId, loading, setLoading, baseUrl }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
 
@@ -25,7 +25,8 @@ const Get = ({ setCount, count, setEdit, loading, setLoading, baseUrl }) => {
   }, [count]);
 
   const updateUser = (d) => {
-    setEdit(d);
+    // console.log("updateUser "+JSON.stringify(d))
+    setEditId(d.userId);
   };
 
   const deleteUser = (d) => {
