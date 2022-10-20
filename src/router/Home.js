@@ -1,9 +1,15 @@
-import React from 'react'
-
+import React from "react";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
-  return (
-    <div>React Crud Operation Application</div>
-  )
-}
 
-export default Home
+  const navigate  = useNavigate()
+
+  return (
+    <>
+      <p>React Crud Operation Application</p>
+      {/* <button onClick={()=> navigate('crud')}>View CRUD</button> */}
+    </>
+  );
+};
+
+export default Home;

@@ -2,12 +2,16 @@ import { Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import { Route,Routes } from "react-router-dom";
 import Main from "./crud/Main";
+import Post from "./crud/Post";
 import About from "./router/About";
 import Crud from "./router/Crud";
 import Home from "./router/Home";
 import Navbar from "./router/Navbar";
-
+import NoMatch from "./router/NoMatch";
+import Get from "./crud/Get"
+import GetOperationalStatus from "./crud/GetOperationalStatus";
 function App() {
+  const [url, setUrl] = useState("https://pd-organic.herokuapp.com/user"); // "https://pd-organic.herokuapp.com/user"
 
   useEffect(() => {
     document.title = "CRUD"
@@ -24,7 +28,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="about" element={<About/>}></Route>
-        <Route path="crud" element={<Crud/>}></Route>
+        <Route path="crud" element={<Crud/>}>
+          <Route path="getOperationalStatus" element={<GetOperationalStatus baseUrl={url}/>}/>
+        </Route>
+        <Route path="*" element={<NoMatch/>}></Route>
       </Routes>
 
       
