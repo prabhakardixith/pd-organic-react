@@ -45,7 +45,7 @@ const GetOperationalStatus = ({ count,baseUrl }) => {
   useEffect(() => {
     // console.log("operationalStatus useEffect"+baseUrl);
     axios.get(`${baseUrl}/operational?pageNo=${page}`)
-    .then((res) => {setOperationalStatus(res.data);setIsLoading(false)})
+    .then((res) => {console.log(res.data.content);setOperationalStatus(res.data.content);setPage(res.data.totalPages);;setIsLoading(false)})
     .catch(er=> console.log("Error in Post : " + er.message))
   },[page])
 
@@ -59,6 +59,7 @@ const GetOperationalStatus = ({ count,baseUrl }) => {
       <Table aria-label="User Data" sx={{maxWidth:950}}>
         <TableHead>
             <TableRow>
+            <StyledTableCell align="center">Operation Id</StyledTableCell>
             <StyledTableCell align="center">Message</StyledTableCell>
             <StyledTableCell align="center">Message Date</StyledTableCell>
             <StyledTableCell align="center">User Id</StyledTableCell>
@@ -67,9 +68,8 @@ const GetOperationalStatus = ({ count,baseUrl }) => {
         <TableBody>
           {operationalStatus.map((os) => (
             <StyledTableRow key={os.id}>
-              <StyledTableCell component="th" scope="row" >
-                {os.message}
-              </StyledTableCell>
+              <StyledTableCell align="center">{os.id}</StyledTableCell>
+              <StyledTableCell component="th" scope="row" >{os.message}</StyledTableCell>
               <StyledTableCell align="center">{os.messageDate}</StyledTableCell>
              <StyledTableCell align="center">{os.userId}</StyledTableCell>
               
