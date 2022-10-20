@@ -36,13 +36,13 @@ const Main = () => {
   };
   return (
     <>
-      <nav style={{ display: "inline-block",paddingLeft:'230px',paddingTop:'2px',position:'absolute'}}>
+      <nav style={{ display: "inline-block",paddingLeft:'230px',paddingTop:'2px',paddingBottom:'25px',position:'absolute'}}>
         <Link
           style={{ textDecoration: "none" }}
           to="getOperationalStatus"
           onClick={() => setActive()}
         >
-          {!active ? <Button variant='contained'>View Operational Status</Button> : <Button variant='contained'>Perform User Operations</Button>} 
+          {!active ? <Button variant='contained'>View Operational Status</Button> : <Button variant='contained'>User Actions</Button>} 
         </Link> 
       </nav>
       {active && <Outlet />}
