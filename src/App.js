@@ -11,7 +11,10 @@ import NoMatch from "./router/NoMatch";
 import Get from "./crud/Get"
 import GetOperationalStatus from "./crud/GetOperationalStatus";
 function App() {
-  const [url, setUrl] = useState("http://localhost:8080/user"); //  "https://pd-organic.herokuapp.com/user"
+  const [url, setUrl] = useState(
+    // "http://localhost:8080/user"
+   "https://pd-organic.herokuapp.com/user"
+  ); 
 
   useEffect(() => {
     document.title = "CRUD"
