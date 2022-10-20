@@ -41,11 +41,12 @@ const GetOperationalStatus = ({ count,baseUrl }) => {
   const[operationalStatus,setOperationalStatus] = useState([])
   const[isLoading,setIsLoading] = useState(true)
   const [page, setPage] = useState(1)
+  const [pageCount, setPageCount] = useState(0)
 
   useEffect(() => {
     // console.log("operationalStatus useEffect"+baseUrl);
     axios.get(`${baseUrl}/operational?pageNo=${page}`)
-    .then((res) => {console.log(res.data.content);setOperationalStatus(res.data.content);setPage(res.data.totalPages);;setIsLoading(false)})
+    .then((res) => {setOperationalStatus(res.data.content);setPageCount(res.data.totalPages);;setIsLoading(false)})
     .catch(er=> console.log("Error in Post : " + er.message))
   },[page])
 
@@ -79,7 +80,7 @@ const GetOperationalStatus = ({ count,baseUrl }) => {
       </Table>
 
       {/* <Typography>{`${baseUrl}/operational?pageNo=${page}`}</Typography> */}
-      <Pagination onChange={(e,value)=> setPage(value)} defaultPage={page} count={5} color='primary' variant='outlined' showFirstButton showLastButton/>
+      <Pagination  onChange={(e,value)=> setPage(value)} count={pageCount-1} color='primary' variant='outlined' showFirstButton showLastButton/>
     </TableContainer>)
     }
     </>
