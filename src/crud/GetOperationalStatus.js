@@ -14,6 +14,7 @@ import { CircularProgress } from '@mui/material';
 import {Skeleton} from '@mui/material';
 import {Box} from '@mui/material';
 import { Stack } from '@mui/system';
+import Pagination from '@mui/material/Pagination';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -39,16 +40,18 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const GetOperationalStatus = ({ count,baseUrl }) => {
   const[operationalStatus,setOperationalStatus] = useState([])
   const[isLoading,setIsLoading] = useState(true)
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     // console.log("operationalStatus useEffect"+baseUrl);
-    axios.get(`${baseUrl}/operational`)
+    axios.get(`${baseUrl}/operational?pageNo=${page}`)
     .then((res) => {setOperationalStatus(res.data);setIsLoading(false)})
     .catch(er=> console.log("Error in Post : " + er.message))
-  },[count])
+  },[page])
 
   return (
     <>
+    
      {/* {isLoading ?  <Stack spacing={1} sx={{ width: 700 }} ><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular"></Skeleton><Skeleton variant="rectangular" ></Skeleton></Stack> : <Typography variant="h4" color="initial" >Operational Status</Typography>} */}
       {isLoading ?   <CircularProgress color='secondary' style={{ marginTop:'100px',marginLeft:'200px'}}/> : <Typography variant="h5" color="initial" >Operational Status</Typography>}
       {!isLoading && operationalStatus && (
@@ -74,7 +77,11 @@ const GetOperationalStatus = ({ count,baseUrl }) => {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>)}
+
+      {/* <Typography>{`${baseUrl}/operational?pageNo=${page}`}</Typography> */}
+      <Pagination onChange={(e,value)=> setPage(value)} defaultPage={page} count={5} color='primary' variant='outlined' showFirstButton showLastButton/>
+    </TableContainer>)
+    }
     </>
   )
 }
