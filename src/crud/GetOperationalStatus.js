@@ -50,9 +50,9 @@ const GetOperationalStatus = ({ count,baseUrl }) => {
   return (
     <>
      {/* {isLoading ?  <Stack spacing={1} sx={{ width: 700 }} ><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular"></Skeleton><Skeleton variant="rectangular" ></Skeleton></Stack> : <Typography variant="h4" color="initial" >Operational Status</Typography>} */}
-      {isLoading ?   <CircularProgress color='secondary' style={{ marginTop:'100px',marginLeft:'200px'}}/> : <Typography variant="h4" color="initial" >Operational Status</Typography>}
+      {isLoading ?   <CircularProgress color='secondary' style={{ marginTop:'100px',marginLeft:'200px'}}/> : <Typography variant="h5" color="initial" >Operational Status</Typography>}
       {!isLoading && operationalStatus && (
-      <TableContainer Component={Paper}>
+      <TableContainer Component={Paper} style={{ paddingTop:'10px'}}>
       <Table aria-label="User Data" sx={{maxWidth:950}}>
         <TableHead>
             <TableRow>

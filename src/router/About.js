@@ -2,7 +2,7 @@ import React from 'react'
 
 const About = () => {
   return (
-    <div>About</div>
+    <div>This Application Is Working On Basic Operations Performed By User</div>
   )
 }
 
