@@ -40,7 +40,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const GetOperationalStatus = ({ count,baseUrl }) => {
   const[operationalStatus,setOperationalStatus] = useState([])
   const[isLoading,setIsLoading] = useState(true)
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(0)
   const [pageCount, setPageCount] = useState(0)
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const GetOperationalStatus = ({ count,baseUrl }) => {
       </Table>
 
       {/* <Typography>{`${baseUrl}/operational?pageNo=${page}`}</Typography> */}
-      <Pagination  onChange={(e,value)=> setPage(value)} count={pageCount-1} color='primary' variant='outlined' showFirstButton showLastButton/>
+      <Pagination  onChange={(e,value)=> setPage(value)} count={pageCount} color='primary' variant='outlined' showFirstButton showLastButton/>
     </TableContainer>)
     }
     </>
