@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import MuiForm from "./MuiForm";
 import axios from "axios";
 import { Link, Outlet } from "react-router-dom";
+import CustomizedSnackbars from "./CustomizedSnackbars";
 
 const Main = () => {
   const [url, setUrl] = useState(
@@ -17,6 +18,9 @@ const Main = () => {
   const [editId, setEditId] = useState();
   const [deleted, setDeleted] = useState();
   const [loading, setLoading] = useState(true);
+  const [yes, setYes] = useState(true);
+  const [no, setNo] = useState(false);
+  const [error, setError] = useState()
 
   useEffect(() => {
     document.title = "User List";
@@ -84,7 +88,12 @@ const Main = () => {
           {/* <GetOperationalStatus count={count} baseUrl={url} /> */}
         </div>
       )}
-    </div>
+      {
+        loading && error && <CustomizedSnackbars error={error} setError={setError}yes={yes} setYes={setYes} no={no} setNo={setNo}/>
+      }
+      {
+        !loading && !error && <CustomizedSnackbars error={error} setError={setError}yes={yes} setYes={setYes} no={no} setNo={setNo}/>
+      }    </div>
   );
 };
 

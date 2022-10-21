@@ -9,6 +9,9 @@ import CircularProgress from "@mui/material/CircularProgress";
 const Post = ({ setCount, edit, setEdit, setEditId, baseUrl, loading }) => {
   const [forms, setForms] = useState();
   const [editor, setEditor] = useState();
+  const[error,setError] = useState(false);
+  const[succes,setSucess] = useState(false);
+
   const [user, setUser] = useState({
     userId: 0,
     userName: "",
