@@ -15,6 +15,8 @@ import { Skeleton } from "@mui/material";
 import { Box } from "@mui/material";
 import { Stack } from "@mui/system";
 import Pagination from "@mui/material/Pagination";
+import Alert from '@mui/material/Alert';
+import CustomizedSnackbars from "./CustomizedSnackbars";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -38,11 +40,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 // Component
 
-const GetOperationalStatus = ({ count, baseUrl }) => {
+const GetOperationalStatus = ({ baseUrl }) => {
   const [operationalStatus, setOperationalStatus] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(0);
   const [pageCount, setPageCount] = useState(0);
+  const [yes, setYes] = useState(false);
+  const [no, setNo] = useState(false);
+  const [error, setError] = useState()
 
   useEffect(() => {
     // console.log("operationalStatus useEffect"+baseUrl);
@@ -52,13 +57,15 @@ const GetOperationalStatus = ({ count, baseUrl }) => {
         setOperationalStatus(res.data.content);
         setPageCount(res.data.totalPages);
         setIsLoading(false);
+        setYes(true);
       })
-      .catch((er) => console.log("Error in Post : " + er.message));
+      .catch((er) =>{setNo(true);setError(er.message); console.log("Error in Post : " + er.message)});
   }, [page]);
 
   return (
     <>
       {/* {isLoading ?  <Stack spacing={1} sx={{ width: 700 }} ><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular" ></Skeleton><Skeleton variant="rectangular"></Skeleton><Skeleton variant="rectangular" ></Skeleton></Stack> : <Typography variant="h4" color="initial" >Operational Status</Typography>} */}
+      
       {isLoading ? (
         <CircularProgress
           color="secondary"
@@ -110,6 +117,13 @@ const GetOperationalStatus = ({ count, baseUrl }) => {
           </TableContainer>
         </Paper>
       )}
+      {
+        isLoading && error && <CustomizedSnackbars error={error} setError={setError}yes={yes} setYes={setYes} no={no} setNo={setNo}/>
+      }
+      {
+        !isLoading && !error && <CustomizedSnackbars error={error} setError={setError}yes={yes} setYes={setYes} no={no} setNo={setNo}/>
+      }
+
     </>
   );
 };
