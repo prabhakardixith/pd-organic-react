@@ -6,7 +6,9 @@ const Put = ({setCount}) => {
     const [user, setUser] = useState({
         userId : 0,
         userName :'',
-        emailId:''
+        emailId:'',
+        phoneNo:'',
+        address:''
     })
 
     const addUser = ()=>{
