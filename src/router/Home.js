@@ -6,7 +6,7 @@ const Home = () => {
 
   return (
     <>
-      <p>React Crud Operation Application</p>
+      <p style={{position:'absolute',top:'70px',left:0,right:'0',zIndex:-1}}>React Crud Operation Application</p>
       {/* <button onClick={()=> navigate('crud')}>View CRUD</button> */}
     </>
   );
