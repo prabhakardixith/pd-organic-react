@@ -22,7 +22,7 @@ const Navbar = () => {
           style={{ marginLeft: "16px", color: "white", textDecoration: "none" }}
           to="/crud"
         >
-          CRUD
+          Action
         </NavLink>
       </nav>
     </Paper>

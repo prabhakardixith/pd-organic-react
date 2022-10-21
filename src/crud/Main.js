@@ -45,7 +45,7 @@ const Main = () => {
           to="getOperationalStatus"
           onClick={() => setActive()}
         >
-          {!active ? <Button variant='contained'>View Operational Status</Button> : <Button variant='contained'>User Actions</Button>} 
+          {!active ? <Button variant='contained'>Operations</Button> : <Button variant='contained'>User Actions</Button>} 
         </Link> 
       </nav>
       {active && <Outlet />}
