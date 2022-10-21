@@ -38,7 +38,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const MuiTable = ({data,deleteUser,updateUser,pageCount,setPage}) => {
   
   return (
-    <TableContainer Component={Paper} >
+    <Paper elevation={4}>
+      <TableContainer Component={Paper} >
       <Table aria-label="User Data" sx={{maxWidth:950}}>
         <TableHead>
             <TableRow>
@@ -65,8 +66,9 @@ const MuiTable = ({data,deleteUser,updateUser,pageCount,setPage}) => {
             }
         </TableBody>
       </Table>
-      <Pagination  onChange={(e,value)=> setPage(value-1)} count={pageCount} color='primary' variant='outlined' showFirstButton showLastButton/>
+      <Pagination  onChange={(e,value)=> setPage(value-1)} count={pageCount} color='primary' showFirstButton showLastButton/>
     </TableContainer>
+    </Paper>
   );
 };
 

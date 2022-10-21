@@ -60,7 +60,7 @@ const Get = ({ setCount, count, setEditId, loading, setLoading, baseUrl }) => {
     // </Box>
     <CircularProgress color='primary' style={{ marginLeft:'200px',marginTop:'150px' }}/>
   ) : (
-    <div>
+    <div style={{marginLeft:'10px'}}>
       {!data?.length ? (
         <Typography variant="h4" >
           List is empty
