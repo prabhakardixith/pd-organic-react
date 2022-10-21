@@ -13,7 +13,8 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import {useState} from 'react'
+import Pagination from '@mui/material/Pagination';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -34,7 +35,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const MuiTable = ({data,deleteUser,updateUser}) => {
+const MuiTable = ({data,deleteUser,updateUser,pageCount,setPage}) => {
+  
   return (
     <TableContainer Component={Paper} >
       <Table aria-label="User Data" sx={{maxWidth:950}}>
@@ -63,6 +65,7 @@ const MuiTable = ({data,deleteUser,updateUser}) => {
             }
         </TableBody>
       </Table>
+      <Pagination  onChange={(e,value)=> setPage(value-1)} count={pageCount} color='primary' variant='outlined' showFirstButton showLastButton/>
     </TableContainer>
   );
 };

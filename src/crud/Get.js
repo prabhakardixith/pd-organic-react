@@ -10,19 +10,24 @@ import Skeleton from '@mui/material/Skeleton';
 const Get = ({ setCount, count, setEditId, loading, setLoading, baseUrl }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState();
+  const [page, setPage] = useState(0)
+  const [pageCount, setPageCount] = useState(0)
 
   useEffect(() => {
     // console.log("use Effect Get");
     axios
       // .get("https://pd-organic.herokuapp.com/user")
-      .get(baseUrl)
+      .get(baseUrl+`?pageNo=${page}`)
       .then((res) => {
-        setData(res.data);
-        setCount(res.data.length);
+        setData(res.data.content);
+        // console.log(res.data);
+        // console.log(baseUrl+`?pageNo=${page}`);
+        setPageCount(res.data.totalPages);
+        setCount(res.data.totalElements);
         setLoading(false);
       })
       .catch((er) => setError(er.message));
-  }, [count]);
+  }, [count,page]);
 
   const updateUser = (d) => {
     // console.log("updateUser "+JSON.stringify(d))
@@ -71,7 +76,7 @@ const Get = ({ setCount, count, setEditId, loading, setLoading, baseUrl }) => {
         </Typography>
       )}
       {!error && data && (
-        <MuiTable data={data} updateUser={updateUser} deleteUser={deleteUser} />
+        <MuiTable setPage={setPage} pageCount={pageCount} data={data} updateUser={updateUser} deleteUser={deleteUser} />
       )}
     </div>
   );
