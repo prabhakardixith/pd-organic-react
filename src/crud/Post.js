@@ -80,10 +80,12 @@ const Post = ({ setCount, edit, setEdit,setEditId, baseUrl, loading }) => {
           <Paper
             style={{
               padding: "30px 10px",
-              width: "350px"
+              width: "350px",
+              // marginLeft:'10px'
             }}
             align="center"
             spacing={2}
+            elevation={4}
           >
             <form
               onSubmit={(e) => {

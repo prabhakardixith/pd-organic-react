@@ -50,7 +50,7 @@ const Main = () => {
       </nav>
       {active && <Outlet />}
       {!active && (
-        <div>
+        <div style={{ marginLeft:'10px'}}>
           {/* Crud */}
 
           {count ? (
