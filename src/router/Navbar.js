@@ -3,12 +3,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
-    <Paper elevation={4}>
+    <Paper elevation={4} style={{marginBottom: "10px",backgroundColor: "#0277BD",position:'fixed',left:0,right:0}}>
       <nav
         style={{
-          backgroundColor: "#0277BD",
           padding: "16px 32px",
-          marginBottom: "10px",
         }}
       >
         <NavLink to="/" style={{ color: "white", textDecoration: "none" }}>

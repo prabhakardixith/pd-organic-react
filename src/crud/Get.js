@@ -20,7 +20,7 @@ const Get = ({ setCount, count, setEditId, loading, setLoading, baseUrl }) => {
       .get(baseUrl+`?pageNo=${page}`)
       .then((res) => {
         setData(res.data.content);
-        // console.log(res.data);
+        console.log(res.data);
         // console.log(baseUrl+`?pageNo=${page}`);
         setPageCount(res.data.totalPages);
         setCount(res.data.totalElements);
@@ -60,7 +60,7 @@ const Get = ({ setCount, count, setEditId, loading, setLoading, baseUrl }) => {
     // </Box>
     <CircularProgress color='primary' style={{ marginLeft:'200px',marginTop:'150px' }}/>
   ) : (
-    <div style={{marginLeft:'10px'}}>
+    <div style={{marginBottom:'50px'}}>
       {!data?.length ? (
         <Typography variant="h4" >
           List is empty

@@ -27,7 +27,7 @@ const Main = () => {
     if (editId != null) {
       axios
         .get(`https://pd-organic.herokuapp.com/userById?id=${editId}`)
-        .then((response) => setEdit(response.data))
+        .then((response) => {console.log("editUser: "+JSON.stringify(response.data));setEdit(response.data)})
         .catch((error) => console.log("error while reading user by id"));
     }
   }, [editId]);
@@ -38,7 +38,7 @@ const Main = () => {
     setActives(!active);
   };
   return (
-    <>
+    <div style={{position:'absolute',top:'70px',left:0,right:'0',zIndex:-1}}>
       <nav style={{ display: "inline-block",paddingLeft:'230px',paddingTop:'2px',paddingBottom:'25px',position:'absolute'}}>
         <Link
           style={{ textDecoration: "none" }}
@@ -84,7 +84,7 @@ const Main = () => {
           {/* <GetOperationalStatus count={count} baseUrl={url} /> */}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

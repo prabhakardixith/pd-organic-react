@@ -6,22 +6,21 @@ import SendIcon from "@mui/icons-material/Send";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
-const Post = ({ setCount, edit, setEdit,setEditId, baseUrl, loading }) => {
+const Post = ({ setCount, edit, setEdit, setEditId, baseUrl, loading }) => {
   const [forms, setForms] = useState();
   const [editor, setEditor] = useState();
   const [user, setUser] = useState({
     userId: 0,
     userName: "",
     emailId: "",
+    phoneNo: "",
+    address: "",
   });
 
   const addUser = () => {
-    // const formStatus = handleForm();
-    // if (formStatus.status === true) {
     if (!edit) {
       console.log("new User :" + JSON.stringify(user));
       axios
-        // .post("https://pd-organic.herokuapp.com/user", user)
         .post(baseUrl, user)
         .then((res) => setCount(res.data.length))
         .then((res) =>
@@ -29,13 +28,14 @@ const Post = ({ setCount, edit, setEdit,setEditId, baseUrl, loading }) => {
             userId: 0,
             userName: "",
             emailId: "",
+            phoneNo: "",
+            address: "",
           })
         )
         .catch((er) => console.log("Error in Post : " + er.message));
     } else {
       console.log("editor User :" + JSON.stringify(editor));
       axios
-        // .put("https://pd-organic.herokuapp.com/user", editor)
         .put(baseUrl, editor)
         .then((res) => {
           setCount(0);
@@ -44,47 +44,34 @@ const Post = ({ setCount, edit, setEdit,setEditId, baseUrl, loading }) => {
         .then((res) => {
           setEditor(null);
           setEdit(null);
-          setEditId(null)
+          setEditId(null);
         })
         .catch((er) => console.log("Error in Put : " + er.message));
     }
-    // } else {
-    //   console.log(formStatus);
-    //   setForms(formStatus);
-    //   setUser(null);
-    //   setEditor({})
-    // }
   };
 
   return (
     <div style={{ marginTop: "30px", marginBottom: "30px" }}>
       {loading && (
-        // <Stack spacing={1} align="center">
-        //   <Skeleton
-        //     width={210}
-        //     height={40}
-        //     variant="text"
-        //     sx={{ fontSize: "1rem" }}
-        //   />
-        //   <Skeleton variant="rectangular" width={210} height={60} />
-        //   <Skeleton variant="rounded" width={210} height={60} />
-        // </Stack>
-        <CircularProgress color='warning' style={{ marginLeft:'200px',marginTop:'150px' }}/>
+        <CircularProgress
+          color="warning"
+          style={{ marginLeft: "200px", marginTop: "150px" }}
+        />
       )}
       {!edit
         ? !loading && <Typography variant="h4">Add New User</Typography>
         : !loading && <Typography variant="h4">Edit New User</Typography>}
       {!loading && !editor && edit && setEditor(edit)}
       {!loading && (
-        <Grid style={{ marginTop: "30px" }} spacing={2}>
+        <Grid style={{ marginTop: "30px" }} spacing={3}>
           <Paper
             style={{
-              padding: "30px 10px",
+              padding: "50px 10px",
               width: "350px",
               // marginLeft:'10px'
             }}
             align="center"
-            spacing={2}
+            spacing={4}
             elevation={4}
           >
             <form
@@ -102,9 +89,10 @@ const Post = ({ setCount, edit, setEdit,setEditId, baseUrl, loading }) => {
                 fullWidth
                 value={editor ? editor?.userName : user?.userName}
                 label="User Name"
-                style={{marginBottom:'10px'}}
+                style={{ marginBottom: "10px" }}
               />
               <TextField
+                style={{ paddingBottom: "10px" }}
                 onChange={(e) =>
                   editor
                     ? setEditor({ ...editor, emailId: e.target.value })
@@ -113,6 +101,29 @@ const Post = ({ setCount, edit, setEdit,setEditId, baseUrl, loading }) => {
                 value={editor ? editor?.emailId : user?.emailId}
                 fullWidth
                 label="User Email"
+              />
+              <TextField
+                style={{ paddingBottom: "10px" }}
+                onChange={(e) =>
+                  editor
+                    ? setEditor({ ...editor, phoneNo: e.target.value })
+                    : setUser({ ...user, phoneNo: e.target.value })
+                }
+                value={editor ? editor?.phoneNo : user?.phoneNo}
+                fullWidth
+                label="Mobile Number"
+              />
+
+              <TextField
+                style={{ paddingBottom: "10px" }}
+                onChange={(e) =>
+                  editor
+                    ? setEditor({ ...editor, address: e.target.value })
+                    : setUser({ ...user, address: e.target.value })
+                }
+                value={editor ? editor?.address : user?.address}
+                fullWidth
+                label="Address"
               />
 
               <Button variant="outlined" type="submit" endIcon={<SendIcon />}>

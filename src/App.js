@@ -26,8 +26,8 @@ function App() {
   
 
   return (
-    <>
-      <Navbar/>
+    <div>
+      <Navbar/>      
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="about" element={<About/>}></Route>
@@ -36,9 +36,7 @@ function App() {
         </Route>
         <Route path="*" element={<NoMatch/>}></Route>
       </Routes>
-
-      
-    </>
+    </div>
 
   );
 }

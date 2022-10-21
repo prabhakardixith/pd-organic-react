@@ -70,9 +70,9 @@ const GetOperationalStatus = ({ count, baseUrl }) => {
         </Typography>
       )}
       {!isLoading && operationalStatus && (
-        <Paper elevation={4} style={{marginTop:'20px',marginLeft:'10px'}}>
+        <Paper elevation={4} style={{marginTop:'20px',marginLeft:'10px',marginBottom:'50px'}}>
           <TableContainer Component={Paper} style={{ paddingTop: "0px" }} >
-            <Table aria-label="User Data" sx={{ maxWidth: 950 }}>
+            <Table aria-label="User Data" sx={{ maxWidth:'100%' }}>
               <TableHead>
                 <TableRow>
                   <StyledTableCell align="center">Operation Id</StyledTableCell>
@@ -85,7 +85,7 @@ const GetOperationalStatus = ({ count, baseUrl }) => {
                 {operationalStatus.map((os) => (
                   <StyledTableRow key={os.id}>
                     <StyledTableCell align="center">{os.id}</StyledTableCell>
-                    <StyledTableCell component="th" scope="row">
+                    <StyledTableCell component="th" scope="row" align="center">
                       {os.message}
                     </StyledTableCell>
                     <StyledTableCell align="center">
