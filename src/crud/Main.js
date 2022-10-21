@@ -9,7 +9,10 @@ import axios from "axios";
 import { Link, Outlet } from "react-router-dom";
 
 const Main = () => {
-  const [url, setUrl] = useState("https://pd-organic.herokuapp.com/user"); // "https://pd-organic.herokuapp.com/user"
+  const [url, setUrl] = useState(
+    "https://pd-organic.herokuapp.com/user"
+    // "http://localhost:8080/user"
+    ); 
   const [edit, setEdit] = useState();
   const [editId, setEditId] = useState();
   const [deleted, setDeleted] = useState();
