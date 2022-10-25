@@ -11,7 +11,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 export default function CustomizedSnackbars({yes,setYes,setNo,no,setError,error}) {
   const [openSucces, setOpenSucess] = React.useState(yes);
   const [openError, setOpenError] = React.useState(no);
-  
+
   const handleSuccessClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -26,24 +26,28 @@ export default function CustomizedSnackbars({yes,setYes,setNo,no,setError,error}
     }
     setError(null);
     setOpenError(false);
+   
   };
-
-
-  return (
-    <Stack spacing={2} sx={{ width: '100%' }}>
-      
-      <Snackbar open={openSucces ? true : false} autoHideDuration={2000} onClose={handleSuccessClose}>
-        <Alert onClose={handleSuccessClose} severity="success" sx={{ width: '100%' }}>
-          Data Fetched Successfully
-        </Alert>
-      </Snackbar>
-
-      <Snackbar open={openError ? true : false} autoHideDuration={2000} onClose={handleErrorClose}>
-        <Alert onClose={handleErrorClose} severity="error" sx={{ width: '100%' }}>
-          {error}
-        </Alert>
-      </Snackbar>
-      
-    </Stack>
-  );
+  
+  if(openSucces){
+    console.log('snackbar');
+    return (
+      <Stack spacing={2} sx={{ width: '100%' }}>
+        
+        <Snackbar open={openSucces ? true : false} autoHideDuration={2000} onClose={handleSuccessClose}>
+          <Alert onClose={handleSuccessClose} severity="success" sx={{ width: '100%' }}>
+            Data Fetched Successfully
+          </Alert>
+        </Snackbar>
+  
+        <Snackbar open={openError ? true : false} autoHideDuration={2000} onClose={handleErrorClose}>
+          <Alert onClose={handleErrorClose} severity="error" sx={{ width: '100%' }}>
+            {error}
+          </Alert>
+        </Snackbar>
+        
+      </Stack>
+    );
+  }
+  
 }
