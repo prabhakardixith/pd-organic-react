@@ -48,7 +48,8 @@ const MuiTable = ({data,deleteUser,updateUser,pageCount,setPage}) => {
                 <StyledTableCell align="center">Email</StyledTableCell>
                 <StyledTableCell align="center">Mobile</StyledTableCell>
                 <StyledTableCell align="center">Address</StyledTableCell>
-                <StyledTableCell align="center">Action</StyledTableCell>
+                <StyledTableCell align="center">Edit</StyledTableCell>
+                <StyledTableCell align="center">Delete</StyledTableCell>
             </TableRow>
         </TableHead>
         <TableBody>
@@ -62,6 +63,8 @@ const MuiTable = ({data,deleteUser,updateUser,pageCount,setPage}) => {
                         <StyledTableCell align="center">{d.address}</StyledTableCell>
                         <StyledTableCell align="center">
                           <EditIcon onClick={() => updateUser(d)} variant="outlined"  style={{marginRight:'15px'}}>Edit</EditIcon>
+                          </StyledTableCell>
+                          <StyledTableCell align="center">
                           <DeleteIcon  style={{marginLeft:'15px'}} onClick={() => deleteUser(d.userId)} variant="outlined" color="warning" alignment="center" enableRipple></DeleteIcon>
                           </StyledTableCell>
                         
