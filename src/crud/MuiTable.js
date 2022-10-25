@@ -70,8 +70,8 @@ const MuiTable = ({data,deleteUser,updateUser,pageCount,setPage}) => {
             }
         </TableBody>
       </Table>
-      <Pagination  onChange={(e,value)=> setPage(value-1)} count={pageCount} color='primary' showFirstButton showLastButton/>
     </TableContainer>
+    <Pagination  onChange={(e,value)=> setPage(value-1)} count={pageCount} color='primary' showFirstButton showLastButton/>
     </Paper>
   );
 };
