@@ -66,7 +66,7 @@ const Get = ({ setCount, count, setEditId, loading, setLoading, baseUrl }) => {
           List is empty
         </Typography>
       ) : (
-        <Typography variant="h4" >
+        <Typography variant="h4" style={{textAlign:'center'}}>
           All Users
         </Typography>
       )}
