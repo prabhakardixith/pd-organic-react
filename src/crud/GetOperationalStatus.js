@@ -77,7 +77,7 @@ const GetOperationalStatus = ({ baseUrl }) => {
         </Typography>
       )}
       {!isLoading && operationalStatus && (
-        <Paper elevation={4} style={{marginTop:'20px',marginLeft:'10px',marginBottom:'50px'}}>
+        <Paper elevation={4} style={{marginTop:'20px',marginLeft:'10px',marginRight:'10px',marginBottom:'50px'}}>
           <TableContainer Component={Paper} style={{ paddingTop: "0px" }} >
             <Table aria-label="User Data" sx={{ maxWidth:'100%' }}>
               <TableHead>
@@ -108,7 +108,7 @@ const GetOperationalStatus = ({ baseUrl }) => {
 
             {/* <Typography>{`${baseUrl}/operational?pageNo=${page}`}</Typography> */}
             <Pagination
-              onChange={(e, value) => setPage(value - 1)}
+              onChange={(e, value) => {setPage(value - 1);}}
               count={pageCount}
               color="primary"
               showFirstButton

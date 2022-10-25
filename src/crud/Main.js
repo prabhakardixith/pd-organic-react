@@ -54,7 +54,7 @@ const Main = () => {
       </nav>
       {active && <Outlet />}
       {!active && (
-        <div style={{ marginLeft:'10px'}}>
+        <div style={{ marginLeft:'10px',marginRight:'10px'}}>
           {/* Crud */}
 
           {count ? (
