@@ -54,7 +54,7 @@ const Post = ({ setCount, edit, setEdit, setEditId, baseUrl, loading }) => {
   };
 
   return (
-    <div style={{ marginTop: "30px", marginBottom: "30px" }}>
+    <div style={{ marginTop: "30px", marginBottom: "30px" , marginLeft:'40%'}}>
       {loading && (
         <CircularProgress
           color="warning"
@@ -62,7 +62,7 @@ const Post = ({ setCount, edit, setEdit, setEditId, baseUrl, loading }) => {
         />
       )}
       {!edit
-        ? !loading && <Typography variant="h4">Add New User</Typography>
+        ? !loading && <Typography variant="h4" style={{}}>Add New User</Typography>
         : !loading && <Typography variant="h4">Edit New User</Typography>}
       {!loading && !editor && edit && setEditor(edit)}
       {!loading && (
@@ -71,6 +71,10 @@ const Post = ({ setCount, edit, setEdit, setEditId, baseUrl, loading }) => {
             style={{
               padding: "50px 10px",
               width: "350px",
+              display:'relative',
+              left:0,
+              right:0
+
               // marginLeft:'10px'
             }}
             align="center"
