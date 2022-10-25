@@ -107,14 +107,15 @@ const GetOperationalStatus = ({ baseUrl }) => {
             </Table>
 
             {/* <Typography>{`${baseUrl}/operational?pageNo=${page}`}</Typography> */}
-            <Pagination
+           
+          </TableContainer>
+          <Pagination
               onChange={(e, value) => {setPage(value - 1);}}
               count={pageCount}
               color="primary"
               showFirstButton
               showLastButton
             />
-          </TableContainer>
         </Paper>
       )}
       {
