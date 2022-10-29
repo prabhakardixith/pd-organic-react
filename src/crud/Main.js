@@ -8,7 +8,7 @@ import MuiForm from "./MuiForm";
 import axios from "axios";
 import { Link, Outlet } from "react-router-dom";
 import CustomizedSnackbars from "./CustomizedSnackbars";
-
+import { useNavigate } from "react-router-dom";
 const Main = () => {
   const [url, setUrl] = useState(
     "https://pd-organic.herokuapp.com/user"
@@ -21,7 +21,7 @@ const Main = () => {
   const [yes, setYes] = useState(true);
   const [no, setNo] = useState(false);
   const [error, setError] = useState()
-
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "User List";
   }, []);
@@ -40,7 +40,11 @@ const Main = () => {
   const setActive = () => {
     console.log("is active");
     setActives(!active);
+    if(active === true){
+      navigate(-1)
+    }
   };
+
   return (
     <div style={{position:'absolute',top:'70px',left:0,right:'0',zIndex:-1}}>
       <nav style={{ display: "inline-block",paddingLeft:'230px',paddingTop:'2px',paddingBottom:'25px',position:'absolute'}}>
@@ -49,7 +53,7 @@ const Main = () => {
           to="getOperationalStatus"
           onClick={() => setActive()}
         >
-          {!active ? <Button variant='contained'>Operations</Button> : <Button variant='contained'>User Actions</Button>} 
+          {!active ? <Button variant='contained' style={{backgroundColor:'#1565c0'}}>Operations</Button> : <Button variant='contained'>User Actions</Button>} 
         </Link> 
       </nav>
       {active && <Outlet />}
