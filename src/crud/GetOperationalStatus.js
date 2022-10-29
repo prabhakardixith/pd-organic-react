@@ -20,7 +20,7 @@ import CustomizedSnackbars from "./CustomizedSnackbars";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: '#1565c0',
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -68,8 +68,8 @@ const GetOperationalStatus = ({ baseUrl }) => {
       
       {isLoading ? (
         <CircularProgress
-          color="secondary"
-          style={{ marginTop: "100px", marginLeft: "200px" }}
+          // color="secondary"
+          style={{ marginTop: "100px", marginLeft: "200px" , color:'#1565c0' }}
         />
       ) : (
         <Typography variant="h5" color="initial" style={{marginLeft:'10px'}}>
@@ -81,7 +81,7 @@ const GetOperationalStatus = ({ baseUrl }) => {
           <TableContainer Component={Paper} style={{ paddingTop: "0px" }} >
             <Table aria-label="User Data" sx={{ maxWidth:'100%' }}>
               <TableHead>
-                <TableRow>
+                <TableRow style={{}}>
                   <StyledTableCell align="center">Operation Id</StyledTableCell>
                   <StyledTableCell align="center">Message</StyledTableCell>
                   <StyledTableCell align="center">Message Date</StyledTableCell>
