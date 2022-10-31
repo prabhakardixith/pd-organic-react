@@ -1,13 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Users from "./dynamic/Users";
 const Home = () => {
 
   const navigate  = useNavigate()
 
   return (
     <>
-      <p style={{position:'absolute',top:'70px',left:0,right:'0',zIndex:-1}}>React Crud Operation Application</p>
-      {/* <button onClick={()=> navigate('crud')}>View CRUD</button> */}
+      <div style={{position:'absolute',top:'70px',left:0,right:'0',zIndex:-1}}>React Crud Operation Application
+      </div>
+      
     </>
   );
 };

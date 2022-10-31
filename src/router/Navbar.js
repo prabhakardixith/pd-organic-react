@@ -24,6 +24,12 @@ const Navbar = () => {
         >
           Action
         </NavLink>
+        <NavLink
+          style={{ marginLeft: "16px", color: "white", textDecoration: "none" }}
+          to="/users"
+        >
+          Users
+        </NavLink>
       </nav>
     </Paper>
   );
