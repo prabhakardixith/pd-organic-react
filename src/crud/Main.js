@@ -9,6 +9,8 @@ import axios from "axios";
 import { Link, Outlet } from "react-router-dom";
 import CustomizedSnackbars from "./CustomizedSnackbars";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router-dom'
+import Users from "../router/dynamic/Users";
 const Main = () => {
   const [url, setUrl] = useState(
     "https://pd-organic.herokuapp.com/user"
@@ -22,6 +24,7 @@ const Main = () => {
   const [no, setNo] = useState(false);
   const [error, setError] = useState()
   const navigate = useNavigate();
+  const loc = useLocation()
   useEffect(() => {
     document.title = "User List";
   }, []);
@@ -47,6 +50,7 @@ const Main = () => {
 
   return (
     <div style={{position:'absolute',top:'70px',left:0,right:'0',zIndex:-1}}>
+      
       <nav style={{ display: "inline-block",paddingLeft:'230px',paddingTop:'2px',paddingBottom:'25px',position:'absolute'}}>
         <Link
           style={{ textDecoration: "none" }}
